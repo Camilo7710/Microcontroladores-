@@ -1,3 +1,7 @@
+// Integrantes: Eddy Ramirez, Camilo Rada, Erick Leon
+// Ficha: 2674489
+// Microcontroladores
+
 void setup() {
  pinMode(D4,OUTPUT);
  pinMode(D3,INPUT);
