@@ -1,0 +1,137 @@
+// Marlon Camilo Rada Archila/ Eddy Santiago Ramirez Salgado/ Erick Santiago Leon Perez
+// Microcontroladores
+// Ficha: 2674489 
+
+int potenciometro=A0;
+int ledazul=D0;
+int ledrojo=D1;
+int ledinterno=D4;
+
+int valorMEDIO=511;
+int valorMAXIMO=1024;
+int valorMINIMO=100;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(D0, OUTPUT);
+  pinMode(D1, OUTPUT);
+  pinMode(D4, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  float B,voltaje;
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  B=analogRead(A0);
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  voltaje=((B*5.000)/1023.000);
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  Serial.print("Señal analogica: ");
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  Serial.println(B);
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  Serial.print("Voltaje: ");
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  Serial.println(voltaje);
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  delay(1000);
+  
+  IGUALOSUPERIORALMEDIO();
+  VALORMAXIMO();
+  VALORBAJO();
+  VALORMINIMO();
+  
+  
+}
+
+
+void IGUALOSUPERIORALMEDIO()
+{
+  digitalWrite(D0, analogRead(A0)>=valorMEDIO ? HIGH : LOW );
+}
+
+void VALORMAXIMO()
+{
+  if(analogRead(A0)==valorMAXIMO)
+  {
+   digitalWrite(D1,  HIGH );
+   digitalWrite(D0,  LOW );
+   digitalWrite(D4,  HIGH);
+  }
+  else
+  {
+   digitalWrite(D1,  LOW );
+   digitalWrite(D0,  HIGH );
+   digitalWrite(D4,  LOW);
+  }
+  
+}
+
+void VALORBAJO()
+{
+  while(analogRead(A0)<valorMEDIO&&analogRead(A0)>valorMINIMO)
+  {
+  digitalWrite(D4,  LOW);
+  delay(500);
+  digitalWrite(D4,  HIGH);
+  delay(500);
+  }
+}
+
+void VALORMINIMO()
+{
+  while(analogRead(A0)<valorMINIMO)
+  {
+    digitalWrite(D0, HIGH);
+    digitalWrite(D1, HIGH);
+    digitalWrite(D4, LOW);
+    delay(500);
+    
+    digitalWrite(D0, LOW);
+    digitalWrite(D1, LOW);
+    digitalWrite(D4, HIGH);
+    delay(500);
+  }
+}
