@@ -1,3 +1,7 @@
+// Eddy Ramirez, Camilo Rada, Erick Leon
+// Ficha: 2674489
+// Microcontroladores 
+
 #include <Bonezegei_DHT11.h>
 
 //param = DHT11 signal pin
