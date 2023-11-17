@@ -2,6 +2,7 @@
 ////eddy santiago ramirez y marlon camilo rada archila
 //microcontroladores
 //ficha 2674489
+
 void setup()
 {
   pinMode(A0, INPUT);
