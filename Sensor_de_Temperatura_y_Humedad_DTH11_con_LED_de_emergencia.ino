@@ -1,3 +1,6 @@
+// Eddy Ramirez, Camilo Rada, Erick leon
+// Ficha: 2674489
+// Microcontroladores
 
 #include <Bonezegei_DHT11.h>
 
